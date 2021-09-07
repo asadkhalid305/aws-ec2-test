@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>{{ message ? message : msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -31,10 +31,25 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  data() {
+    return {
+      message: ''
+    }
+  },
+  created() {
+    axios.get('http://18.216.139.174:5000/app/status').then(res => {
+      console.log(res.data);
+      this.message = res.data.data
+    })
+    .catch(err => {
+      console.log(err);
+    })
   }
 }
 </script>
