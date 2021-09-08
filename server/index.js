@@ -4,6 +4,7 @@
 const Http = require('http');
 const Express = require('express');
 const BodyParser = require('body-parser');
+const cors = require('cors')
 const Mongoose = require('mongoose')
 
 
@@ -26,6 +27,7 @@ application.use(BodyParser.json());
 application.use(BodyParser.urlencoded({
     extended: false
 }));
+application.use(cors())
 
 
 /**
