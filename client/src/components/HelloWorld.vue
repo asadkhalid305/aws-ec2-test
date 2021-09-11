@@ -84,7 +84,7 @@ export default {
   },
   created() {
     axios
-      .get(`http://localhost:5000/api/v1/app/status`)
+      .get(`http://3.138.109.190/api/v1/app/status`)
       .then(res => {
         this.message = res.data.message;
       })
